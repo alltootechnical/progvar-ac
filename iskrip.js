@@ -65,7 +65,7 @@ function PageCtrl($scope, $http, $interval) {
     $scope.showDebugTable = false;
 
     $scope.loadProbs = function() {
-        $http.get("http://uhunt.felix-halim.net/api/p").success(function(data, status) {
+        $http.get("https://cors-anywhere.herokuapp.com/http://uhunt.felix-halim.net/api/p").success(function(data, status) {
             for (var i = 0; i < data.length; i++) {
                 $scope.UVaprobs[data[i][0]] = {num: data[i][1], title: data[i][2]};
                 //console.log($scope.UVaprobs[data[i][0]]);
@@ -82,7 +82,7 @@ function PageCtrl($scope, $http, $interval) {
     }
 
     $scope.loadCF = function() {
-        $http.get('http://codeforces.com/api/user.status?handle=' + $scope.teamdb[$scope.currTeam].cf[0] + '&count=1').success(function(data, status) {
+        $http.get('https://cors-anywhere.herokuapp.com/http://codeforces.com/api/user.status?handle=' + $scope.teamdb[$scope.currTeam].cf[0] + '&count=1').success(function(data, status) {
             var t = data.result[0];
             $scope.res[0] = {
                 "name": t.author.members[0].handle,
@@ -97,7 +97,7 @@ function PageCtrl($scope, $http, $interval) {
             $scope.done++;
         });
 
-        $http.get('http://codeforces.com/api/user.status?handle=' + $scope.teamdb[$scope.currTeam].cf[1] + '&count=1').success(function(data, status) {
+        $http.get('https://cors-anywhere.herokuapp.com/http://codeforces.com/api/user.status?handle=' + $scope.teamdb[$scope.currTeam].cf[1] + '&count=1').success(function(data, status) {
             var t = data.result[0];
             $scope.res[1] = {
                 "name": t.author.members[0].handle,
@@ -112,7 +112,7 @@ function PageCtrl($scope, $http, $interval) {
             $scope.done++;
         });
 
-        $http.get('http://codeforces.com/api/user.status?handle=' + $scope.teamdb[$scope.currTeam].cf[2] + '&count=1').success(function(data, status) {
+        $http.get('https://cors-anywhere.herokuapp.com/http://codeforces.com/api/user.status?handle=' + $scope.teamdb[$scope.currTeam].cf[2] + '&count=1').success(function(data, status) {
             var t = data.result[0];
             $scope.res[2] = {
                 "name": t.author.members[0].handle,
@@ -146,7 +146,7 @@ function PageCtrl($scope, $http, $interval) {
 
 
     $scope.loadUVa = function() {
-        $http.get('http://uhunt.felix-halim.net/api/subs-user-last/' + $scope.teamdb[$scope.currTeam].uva[0] + '/1').success(function(data, status) {
+        $http.get('https://cors-anywhere.herokuapp.com/http://uhunt.felix-halim.net/api/subs-user-last/' + $scope.teamdb[$scope.currTeam].uva[0] + '/1').success(function(data, status) {
             var t = data.subs[0];
             $scope.res[0 + 3] = {
                 "name": data.name + " (" + data.uname + ")",
@@ -160,7 +160,7 @@ function PageCtrl($scope, $http, $interval) {
             }
             $scope.done++;
         });
-        $http.get('http://uhunt.felix-halim.net/api/subs-user-last/' + $scope.teamdb[$scope.currTeam].uva[1] + '/1').success(function(data, status) {
+        $http.get('https://cors-anywhere.herokuapp.com/http://uhunt.felix-halim.net/api/subs-user-last/' + $scope.teamdb[$scope.currTeam].uva[1] + '/1').success(function(data, status) {
             var t = data.subs[0];
             $scope.res[1 + 3] = {
                 "name": data.name + " (" + data.uname + ")",
@@ -174,7 +174,7 @@ function PageCtrl($scope, $http, $interval) {
             }
             $scope.done++;
         });
-        $http.get('http://uhunt.felix-halim.net/api/subs-user-last/' + $scope.teamdb[$scope.currTeam].uva[2] + '/1').success(function(data, status) {
+        $http.get('https://cors-anywhere.herokuapp.com/http://uhunt.felix-halim.net/api/subs-user-last/' + $scope.teamdb[$scope.currTeam].uva[2] + '/1').success(function(data, status) {
             var t = data.subs[0];
             $scope.res[2 + 3] = {
                 "name": data.name + " (" + data.uname + ")",
