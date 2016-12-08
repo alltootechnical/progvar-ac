@@ -1,0 +1,47 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 25px;
+    color: white;
+    background-color: black;
+}
+
+.heading {
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.footing {
+    font-size: 18px;
+    line-height: 175%;
+}
+
+.boxed {
+    border: 1px solid white;
+    padding: 2px 10px;
+    display: inline;
+    cursor: pointer;
+}
+
+p {
+    text-align: center;
+    font-size: 25px;
+    line-height: 175%;
+}
+
+.pics {
+    display: block;
+    margin: auto;
+}
+
+img {
+    /*max-width: 800px;*/
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: white;
+    border-bottom: 1px solid white;
+    text-decoration: none;
+}

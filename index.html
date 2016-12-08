@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Testing woo</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <script src="iskrip.js"></script>
+    <script>
+    function loadkowt() {
+        var rnd = ["after finals week", "in his free time", "while doing an all-nighter", "while eating lunch", "while eating dinner", "while cramming for an AMC problem set", "while cramming for a paper"];
+        $("#kowts").text(rnd[Math.floor(Math.random()*rnd.length)]);
+    }
+    </script>
+</head>
+
+<body ng-app="myApp" onload="loadkowt()">
+    <div ng-controller="PageCtrl" ng-init="refresh()" style="max-width: 80%; margin: auto">
+        <div class="heading">
+            Did {{teamdb[currTeam].name}} get an AC verdict?
+        </div>
+        <br/>
+
+        <div ng-switch="res[latestIdx].verdict" ng-show="done >= 9">
+            <img src="img/yes2.jpg" align="center" style="display: block;margin: auto;" ng-switch-when="Accepted">
+            <img src="img/wait2.jpg" align="center" style="display: block;margin: auto;" ng-switch-when="Pending">
+            <img src="img/no2.jpg" align="center" style="display: block;margin: auto;" ng-switch-default>
+        </div>
+        <!-- alltootechnical got {{cf1.verdict}} in {{cf1.problem}}...
+        also he got {{uva1.verdict}} in {{uva1.problem}}... -->
+        <!-- <br/> -->
+        <p ng-if="res[latestIdx].verdict == 'Pending'" style="font-style:italic">
+            Updating...
+        </p>
+        <p ng-if="res[latestIdx].verdict != 'Pending' && done >= 9">
+        </p>
+        <div class="footing">
+                Created by <a href="http://alltootechnical.tk">Brian Guadalupe</a> <span id="kowts"></span>. This is also available in <a href="https://github.com/alltootechnical/progvar-ac">a GitHub repo</a> near you...
+            <br/>
+            <br/>
+            Switch teams:
+                <span class="boxed" ng-repeat="t in teamdb" ng-click="switchTeam($index)">{{t.name}}</span>
+
+            <br/>
+            <a ng-click="toggleDebugTable()">Click to toggle debug table</a>
+        </div>
+        <table style="font-size:12px" ng-show="showDebugTable">
+            <tr ng-repeat="v in res | orderBy:'-time'">
+                <td>{{v.time}}</td>
+                <td>{{v.name}}</td>
+                <td>{{v.verdict}}</td>
+                <td>{{v.problem}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
