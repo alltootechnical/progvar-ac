@@ -36,6 +36,7 @@
             Updating...
         </p>
         <p ng-if="res[latestIdx].verdict != 'Pending' && done >= 9">
+            <span ng-if="res[latestIdx].verdict == 'Accepted'">Yes!</span><span ng-if="res[latestIdx].verdict != 'Accepted'">No.</span> <span class="boxed">{{res[latestIdx].name}}</span> got <span class="boxed">{{res[latestIdx].verdict}}</span> from <span class="boxed">{{res[latestIdx].problem}}</span> on <span class="boxed">{{latestUT*1000 | date:"MMM d, h:mm a"}}</span>.
         </p>
         <div class="footing">
                 Created by <a href="http://alltootechnical.tk">Brian Guadalupe</a> <span id="kowts"></span>. This is also available in <a href="https://github.com/alltootechnical/progvar-ac">a GitHub repo</a> near you...
