@@ -82,7 +82,7 @@ function PageCtrl($scope, $http, $interval) {
     }
 
     $scope.loadCF = function() {
-        $http.get('https://cors-anywhere.herokuapp.com/http://codeforces.com/api/user.status?handle=' + $scope.teamdb[$scope.currTeam].cf[0] + '&count=1').success(function(data, status) {
+        $http.get('https://cross-origin.herokuapp.com/http://codeforces.com/api/user.status?handle=' + $scope.teamdb[$scope.currTeam].cf[0] + '&count=1').success(function(data, status) {
             var t = data.result[0];
             $scope.res[0] = {
                 "name": t.author.members[0].handle,
@@ -97,7 +97,7 @@ function PageCtrl($scope, $http, $interval) {
             $scope.done++;
         });
 
-        $http.get('https://cors-anywhere.herokuapp.com/http://codeforces.com/api/user.status?handle=' + $scope.teamdb[$scope.currTeam].cf[1] + '&count=1').success(function(data, status) {
+        $http.get('https://cross-origin.herokuapp.com/http://codeforces.com/api/user.status?handle=' + $scope.teamdb[$scope.currTeam].cf[1] + '&count=1').success(function(data, status) {
             var t = data.result[0];
             $scope.res[1] = {
                 "name": t.author.members[0].handle,
@@ -112,7 +112,7 @@ function PageCtrl($scope, $http, $interval) {
             $scope.done++;
         });
 
-        $http.get('https://cors-anywhere.herokuapp.com/http://codeforces.com/api/user.status?handle=' + $scope.teamdb[$scope.currTeam].cf[2] + '&count=1').success(function(data, status) {
+        $http.get('https://cross-origin.herokuapp.com/http://codeforces.com/api/user.status?handle=' + $scope.teamdb[$scope.currTeam].cf[2] + '&count=1').success(function(data, status) {
             var t = data.result[0];
             $scope.res[2] = {
                 "name": t.author.members[0].handle,
@@ -284,6 +284,7 @@ function PageCtrl($scope, $http, $interval) {
 
     $scope.switchTeam = function(i) {
         $scope.currTeam = i;
+        //$scope.latestUT = 0, $scope.latestIdx = -1;
         $scope.done = 0;
         $scope.res = [{}, {}, {}, {}, {}, {}, {}, {}, {}];
         $scope.thingy();
